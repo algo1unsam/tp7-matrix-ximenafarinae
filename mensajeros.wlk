@@ -5,6 +5,20 @@ object morfeo {
   method peso() = transporte.peso() + pesoPropio
 }
 
+object trinity {
+    var property pesoPropio = 900
+
+    method peso() = pesoPropio
+    
+}
+
+object neo {
+    var property pesoPropio = 80
+    
+    method peso() = pesoPropio
+  
+}
+
 object camion {
   var property acoplados = 1
   
