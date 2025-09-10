@@ -1,3 +1,4 @@
+import wollok.vm.*
 object morfeo {
   var property pesoPropio = 90
   var property transporte = camion
@@ -33,6 +34,10 @@ object puente {
   method dejarPasar(mensajero) = mensajero.peso() < 1000
 }
 
+object laMatrix {
+  
+}
+
 object paquete {
   var property estado = false
   var property destino = puente
@@ -50,4 +55,28 @@ object paquete {
   method puedeSerEntregadoPor(mensajero) {
     return self.destino().dejarPasar(mensajero) && self.estaPago()
   }
+}
+
+object paquetito {
+    method estaPago() = true
+
+    method puedeSerEntregadoPor(mensajo) = true
+}
+
+object paqueton {
+    var property destinos = []
+    var property pagos = [] 
+    const importe = 100
+
+    method agregarDestino(destino) {
+        self.destinos().add(destino)
+    }
+
+    method estaPago() {
+       return self.pagos().sum({p => p}).equals(self.destinos().size() * importe)
+    }
+
+    method pagar() {
+        self.pagos().add(importe)
+    }
 }

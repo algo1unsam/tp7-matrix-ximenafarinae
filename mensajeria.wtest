@@ -63,4 +63,30 @@ describe "2 " {
 }
 
 
-describe "3 " {}
+describe "3 " {
+    test "paquetito siempre esta pago" {
+        assert.that(paquetito.estaPago())
+    }
+
+    test "paquetito cualquiera lo puede entregar" {
+      assert.that(paquetito.puedeSerEntregadoPor(morfeo))
+      assert.that(paquetito.puedeSerEntregadoPor(neo))
+      assert.that(paquetito.puedeSerEntregadoPor(trinity))
+    }
+
+    test "paqueton varios destinos" {
+        paqueton.agregarDestino(puente)
+        paqueton.agregarDestino(laMatrix)
+
+        assert.that(paqueton.destinos().contains(puente))
+    }
+
+    test "paqueton pago parcial" {
+        paqueton.agregarDestino(puente)
+        paqueton.agregarDestino(laMatrix)
+
+        paqueton.pagar()
+
+        assert.notThat(paqueton.estaPago())
+    }
+}
