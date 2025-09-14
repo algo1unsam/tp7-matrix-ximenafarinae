@@ -1,4 +1,9 @@
+import mensajeria.*
 import mensajeros.*
+import transporte.*
+import paquete.*
+import destino.*
+
 
 describe "Test de mensajeros primera parte " {
 	

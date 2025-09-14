@@ -1,5 +1,8 @@
 import mensajeria.*
 import mensajeros.*
+import transporte.*
+import paquete.*
+import destino.*
 
 
 describe "2 " {

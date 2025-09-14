@@ -1,82 +1,18 @@
 import wollok.vm.*
-object morfeo {
-  var property pesoPropio = 90
-  var property transporte = camion
-  
-  method peso() = transporte.peso() + pesoPropio
-}
+import transporte.*
 
-object trinity {
-    var property pesoPropio = 900
+class Mensajero {
+  var property peso
+  var property transporte
 
-    method peso() = pesoPropio
-    
-}
-
-object neo {
-    var property pesoPropio = 80
-    
-    method peso() = pesoPropio
-  
-}
-
-object camion {
-  var property acoplados = 1
-  
-  method peso() = acoplados * 500
-}
-
-object monopatin {
-  method peso() = 1
-}
-
-object puente {
-  method dejarPasar(mensajero) = mensajero.peso() < 1000
-}
-
-object laMatrix {
-  
-}
-
-object paquete {
-  var property estado = false
-  var property destino = puente
-  
-  method pago(_estado) {
-    self.estado(_estado)
+  method peso() {
+    return peso + transporte.peso()
   }
   
-  method estaPago() = estado
-  
-  method pagar() {
-    self.pago(true)
-  }
-
-  method puedeSerEntregadoPor(mensajero) {
-    return self.destino().dejarPasar(mensajero) && self.estaPago()
-  }
 }
 
-object paquetito {
-    method estaPago() = true
+const morfeo = new Mensajero(peso= 90, transporte= camion)
 
-    method puedeSerEntregadoPor(mensajo) = true
-}
+const trinity = new Mensajero(peso= 900, transporte= sinTransporte)
 
-object paqueton {
-    var property destinos = []
-    var property pagos = [] 
-    const importe = 100
-
-    method agregarDestino(destino) {
-        self.destinos().add(destino)
-    }
-
-    method estaPago() {
-       return self.pagos().sum({p => p}).equals(self.destinos().size() * importe)
-    }
-
-    method pagar() {
-        self.pagos().add(importe)
-    }
-}
+const neo = new Mensajero(peso= 0, transporte= sinTransporte)
