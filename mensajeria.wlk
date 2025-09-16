@@ -22,4 +22,8 @@ object mensajeria {
     method puedeEntregarPaquete(mensajero, paquete) = paquete.puedeSerEntregadoPor(mensajero)
 
     method pesoMensajero(mensajero) = mensajero.peso()
+
+    method puedenEntregar(_paquete) = contratados.filter({m => self.puedeEntregarPaquete(m, _paquete)})
+    
+    method tieneSobrepeso() = contratados.sum({m => m.peso()}) > 500
 }

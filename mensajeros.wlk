@@ -60,7 +60,7 @@ object paquete {
 object paquetito {
     method estaPago() = true
 
-    method puedeSerEntregadoPor(mensajo) = true
+    method puedeSerEntregadoPor(mensajero) = true
 }
 
 object paqueton {
@@ -78,5 +78,9 @@ object paqueton {
 
     method pagar() {
         self.pagos().add(importe)
+    }
+
+    method puedeSerEntregadoPor(mensajero) {
+        return self.destinos().all({d => d.dejarPasar(mensajero)}) && self.estaPago()
     }
 }
